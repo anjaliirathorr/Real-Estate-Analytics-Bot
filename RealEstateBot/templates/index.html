@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Real Estate Assistant</title>
+  <link rel="stylesheet" href="../static/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Load Lucide.js for icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <button id="chatbot-toggle" title="Chat with us">
+    <i data-lucide="message-circle"></i>
+  </button>
+  
+  <div id="chat-widget-dialog">
+    <button id="close-chat" title="Close Chat">&times;</button>
+    
+    <div id="avatar-container">
+      <div id="avatar"></div>
+      <h3 class="avatar-heading">Real Estate Assistant</h3>
+    </div>
+    <div id="chat-container">
+      <!-- Messages will be added here dynamically -->
+    </div>
+    <div id="query-recommendations">
+      <!-- Predefined queries will be added here -->
+      <button class="query-btn">What are the current property prices?</button>
+      <button class="query-btn">Can you suggest properties near schools?</button>
+      <button class="query-btn">What is the process for buying a house?</button>
+    </div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Type your message here...">
+      <button id="send-btn"><i data-lucide="send"></i></button>
+    </div>
+    <div id="controls">
+      <button class="control-btn" id="mic-btn" title="Voice Input">
+        <i data-lucide="mic"></i>
+      </button>
+      <button class="control-btn" id="speaker-btn" title="Voice Output">
+        <i data-lucide="volume-x"></i>
+      </button>
+    </div>
+  </div>
+  
+  <script src="../static/scripts.js"></script>
+</body>
+</html>

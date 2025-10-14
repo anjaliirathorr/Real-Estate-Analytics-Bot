@@ -1,0 +1,337 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #eeeeee;
+  color: #333;
+  width: 100%;
+  margin: 0;
+}
+
+#chat-widget-dialog {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 400px;
+  height: 630px;
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  display: none;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#close-chat {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0b68ba;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  z-index: 101;
+}
+
+#avatar-container {
+  background: #0b68ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  flex-direction: column;
+  padding: 5px 15px;
+}
+
+.avatar-heading {
+  color: #ffffff;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#avatar {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2.2s infinite alternate;
+  background-image: url("./rs_agent_female_dummy.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 3px solid #ffffff;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+  to {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  }
+}
+
+#chat-container {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f5f5f5;
+}
+
+#chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chat-container::-webkit-scrollbar-track {
+  background: rgba(245, 245, 245, 0.8);
+  border-radius: 10px;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+  background: rgb(180, 180, 180);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+#chat-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 150, 150);
+}
+
+.message {
+  padding: 15px 20px;
+  border-radius: 20px;
+  max-width: 85%;
+  word-wrap: break-word;
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.user {
+  background: linear-gradient(135deg, #4f80ff, #3969e0);
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+.agent {
+  background: #ffffff;
+  color: #333333;
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#input-container {
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  background: #ffffff;
+  border-top: 1px solid #eaeaea;
+}
+
+#user-input {
+  flex: 1;
+  /* padding: 12px 15px; */
+  padding: 5px 15px;
+  border-radius: 25px 0 0 25px;
+  background: #f0f0f0;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #ddd;
+  border-right: none;
+}
+
+#user-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+#send-btn {
+  padding: 12px 15px;
+  border-radius: 0 25px 25px 0;
+  border: 1px solid #ddd;
+  border-left: none;
+  background: #f0f0f0;
+  color: #0b68ba;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+#send-btn:hover {
+  background: #e4e4e4;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* padding: 10px 0 15px 0; */
+  padding: 5px 0 15px 0;
+  background: #ffffff;
+}
+
+.control-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  color: #0b68ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.control-btn:hover {
+  background: #e4e4e4;
+}
+
+.control-btn.active {
+  background: #0b68ba;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(11, 104, 186, 0.5);
+}
+
+.control-btn.speaking {
+  animation: pulse-speak 1.5s infinite alternate;
+}
+
+@keyframes pulse-speak {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(11, 104, 186, 0.7);
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 5px rgba(11, 104, 186, 0.7);
+  }
+}
+
+.control-btn.active[id="mic-btn"]::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(11, 104, 186, 0.3);
+  z-index: -1;
+  animation: recording 1.5s infinite;
+}
+
+@keyframes recording {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.message.loading {
+  position: relative;
+  background: #ffffff;
+  color: #888;
+}
+
+.message.loading::after {
+  content: '';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+}
+
+.emoji {
+  font-size: 1.2em;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Add styles for the query recommendations container */
+#query-recommendations {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  padding: 10px 15px;
+  background: #ffffff;
+  border-top: 1px solid #eaeaea;
+}
+
+/* Add styles for individual query buttons */
+.query-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Add hover effect for query buttons */
+.query-btn:hover {
+  background-color: #e0e0e0;
+  color: #0b68ba;
+}
