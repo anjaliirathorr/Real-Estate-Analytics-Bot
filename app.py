@@ -10,7 +10,7 @@ from real_estate_agent import RealEstateAgent
 load_dotenv()
 
 # Configuration
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyCHTlehGQFmbl9Cq9HAPKEGiON7CC8HILY')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 KNOWLEDGE_FOLDER = os.getenv('KNOWLEDGE_FOLDER', 'knowledge')  # Path to the knowledge folder
 
 # Set up logging
