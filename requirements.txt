@@ -5,3 +5,5 @@ scikit-learn==1.4.0
 flask==3.0.0
 flask-cors==4.0.0
 python-dotenv==1.0.0
+google-generativeai
+gunicorn==20.1.0
